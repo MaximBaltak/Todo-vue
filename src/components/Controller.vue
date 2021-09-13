@@ -1,7 +1,7 @@
 <template>
     <div class="control">
         <label for="text">добавь задачу</label>
-        <input v-model="text"  id="text" @keypress="add" type="text" class="text">
+        <input v-model="text" @keypress="add" id="text"  type="text" class="text">
         <button class="clear" @click="clear">отчистить список</button>
     </div>
 </template>

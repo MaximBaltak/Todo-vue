@@ -2,7 +2,7 @@
 <header class="header"><h1 class="title">TODO APP</h1></header>
 <Controller/>
 <ul class="tasks">
-  <Task v-for="item in tasks" :key="item.id" :id='item.id' :text='item.text' />
+  <Task v-for="task in tasks" :key="task.id" :id="task.id" :text="task.text"/>
 </ul>
 </template>
 
@@ -44,14 +44,24 @@ export default {
 .tasks{
   list-style-type: none;
   padding: 0;
+  padding-left: 10px;
   margin: 108px auto;
   width: 400px;
   height: 400px;
-  overflow: auto;
-  padding: 10px;
+  overflow-y: auto;
+
 }
-.tasks::-webkit-scrollbar{
-  width: 0;
+.tasks::-webkit-scrollbar {
+  width: 5px;
+}
+.tasks::-webkit-scrollbar-track {
+
+  background-color: white;
+}
+.tasks::-webkit-scrollbar-thumb {
+  width:3px;
+  background: linear-gradient( to top, rgb(0, 189, 139),rgb(3, 154, 255));
+  border-radius: 20px
 }
 
 </style>

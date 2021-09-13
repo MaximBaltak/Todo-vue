@@ -1,7 +1,7 @@
 <template>
     <li class="el">
         <p class="task">{{text}}</p>
-        <button class="delete" @click='click' ><img src="./../assets/exit.png" alt="exit"></button>
+        <button class="delete" @click="deleteEl" ><img src="./../assets/exit.png" alt="exit"></button>
     </li>
 </template>
 <script>
@@ -9,7 +9,7 @@ export default {
   name: 'Task',
   props: ['id', 'text'],
   methods: {
-    click () {
+    deleteEl () {
       this.$store.commit('deleteEl', this.id)
     }
   }

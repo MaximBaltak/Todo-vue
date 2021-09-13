@@ -1,21 +1,21 @@
 export default {
   state: {
-    tasks: [],
-    inputText: ''
+    inputText: '',
+    tasks: []
   },
   mutations: {
-    inputChange (state, value) {
-      state.inputText = value
+    inputChange (state, text) {
+      state.inputText = text
     },
     add (state) {
       if (state.inputText === '') {
-        alert('нет задачи, поле пустое')
+        alert('Поле пустое')
       } else {
-        const body = {
+        const task = {
           id: Math.floor(Math.random() * new Date().getMilliseconds()),
           text: state.inputText
         }
-        state.tasks.unshift(body)
+        state.tasks.unshift(task)
         state.inputText = ''
       }
     },
@@ -27,9 +27,7 @@ export default {
       })
     },
     clear (state) {
-      if (state.tasks.length > 0) {
-        state.tasks = []
-      }
+      state.tasks = []
     }
   }
 }
