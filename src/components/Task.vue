@@ -1,12 +1,18 @@
 <template>
     <li class="el">
-        <p class="task">задача</p>
-        <button class="delete"><img src="./../assets/exit.png" alt="exit"></button>
+        <p class="task">{{text}}</p>
+        <button class="delete" @click='click' ><img src="./../assets/exit.png" alt="exit"></button>
     </li>
 </template>
 <script>
 export default {
-  name: 'Task'
+  name: 'Task',
+  props: ['id', 'text'],
+  methods: {
+    click () {
+      this.$store.commit('deleteEl', this.id)
+    }
+  }
 }
 </script>
 <style lang="scss" scoped>

@@ -2,18 +2,20 @@
 <header class="header"><h1 class="title">TODO APP</h1></header>
 <Controller/>
 <ul class="tasks">
-  <Task/>
-  <Task/>
+  <Task v-for="item in tasks" :key="item.id" :id='item.id' :text='item.text' />
 </ul>
 </template>
 
 <script>
 import Controller from './components/Controller.vue'
 import Task from './components/Task.vue'
+import { mapState } from 'vuex'
 export default {
   name: 'App',
-  components: { Controller, Task }
-
+  components: { Controller, Task },
+  computed: mapState({
+    tasks: state => state.todo.tasks
+  })
 }
 </script>
 
@@ -44,5 +46,12 @@ export default {
   padding: 0;
   margin: 108px auto;
   width: 400px;
+  height: 400px;
+  overflow: auto;
+  padding: 10px;
 }
+.tasks::-webkit-scrollbar{
+  width: 0;
+}
+
 </style>
