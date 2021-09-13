@@ -69,6 +69,10 @@ $color: #FF7B7B;
         cursor: pointer;
         transition: all .3s ;
     }
+    .block{
+      display: block;
+      margin: 40px auto;
+    }
     .clear:hover{
         box-shadow: -7px 6px 10px $color;
         transform: translateX(20px);

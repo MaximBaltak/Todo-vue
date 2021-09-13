@@ -1,9 +1,12 @@
 <template>
 <header class="header"><h1 class="title">TODO APP</h1></header>
+<transition name="control" appear>
 <Controller/>
-<ul class="tasks">
+</transition>
+<transition-group class="tasks" tag="ul" name="list" >
   <Task v-for="task in tasks" :key="task.id" :id="task.id" :text="task.text"/>
-</ul>
+</transition-group>
+
 </template>
 
 <script>
@@ -47,9 +50,7 @@ export default {
   padding-left: 10px;
   margin: 108px auto;
   width: 400px;
-  height: 400px;
-  overflow-y: auto;
-
+  min-height: 400px;
 }
 .tasks::-webkit-scrollbar {
   width: 5px;
@@ -63,5 +64,50 @@ export default {
   background: linear-gradient( to top, rgb(0, 189, 139),rgb(3, 154, 255));
   border-radius: 20px
 }
-
+.control-enter-active{
+  animation: show .6s
+}
+.control-leave-active{
+  animation: show .6s reverse
+}
+.list-enter-active{
+  animation: show-el-left .6s;
+}
+.list-leave-active{
+  position: absolute;
+  animation: show-el-right .6s
+}
+.list-move{
+  transition: transform .6s;
+}
+@keyframes show {
+  0%{
+    transform: translateY(-100px);
+    opacity:0;
+  }
+  100%{
+    transform: translateY(0);
+    opacity:1;
+  }
+}
+@keyframes show-el-left {
+  0%{
+    transform: translateX(-100px);
+    opacity:0;
+  }
+  100%{
+    transform: translateX(0);
+    opacity:1;
+  }
+}
+@keyframes show-el-right {
+  0%{
+    transform: translateX(0);
+    opacity:1;
+  }
+  100%{
+    transform: translateX(100px);
+    opacity:0;
+  }
+}
 </style>
